@@ -1,0 +1,16 @@
+/* Title */
+
+#logo-notice {
+    float: right;
+}
+
+#logo-notice p {
+    font-size: 18px;
+    margin: 5px;
+    text-align: center;
+}
+
+img[alt="department for transport"] {
+    width: 175px;
+    margin: 5px;
+}

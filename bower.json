@@ -1,0 +1,27 @@
+{
+  "name": "reveal.js",
+  "version": "3.2.0",
+  "main": [
+    "js/reveal.js",
+    "css/reveal.css"
+  ],
+  "homepage": "http://donaldwhyte.co.uk",
+  "license": "MIT",
+  "description": "Introduction to Machine Learning",
+  "authors": [
+    "Donald Whyte <donaldwhyte0@gmail.com>"
+  ],
+  "dependencies": {
+    "headjs": "~1.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DonaldWhyte/intro-to-ml.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
+}
