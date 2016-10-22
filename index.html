@@ -32,79 +32,32 @@
     </script>
   </head>
   <body>
+    <div class="reveal">
       <div class="slides">
         <section>
-          <section>
-            <h2>Introduction to Deep Learning</h2>
-            <p><a href="http://twitter.com/donald_whyte">@donald_whyte</a></p>
+          <h2>Introduction to Deep Learning</h2>
+          <p><a href="http://twitter.com/donald_whyte">@donald_whyte</a></p>
 
-            <div id="logo-notice">
-              <p>Originally made for:</p>
-              <img src="images/department-for-transport.svg"
-                   alt="department for transport" />
-            </div>
-          </section>
+          <div id="logo-notice">
+            <p>Originally made for:</p>
+            <img src="images/department-for-transport.svg"
+                 alt="department for transport" />
+          </div>
+        </section>
 
-          <section data-markdown>
-            A bit about myself...
-          </section>
-
-          <section data-markdown data-background="images/bloomberg.jpg"
-                   class="stroke large bloomberg" data-notes="
-I currently work for Bloomberg as an infrastructure engineer. I help design
-and build the low-level systems that keep financial data flowing to the resty
-of the world.
-
-My role is essentially a hybrid between a software engineer, architect and
-data scientist. I dabble in a bit of everything basically!
-">
-            ![bloomberg](images/bloomberg-logo.svg)
-
-            Infrastructure Engineer
-          </section>
-
-          <section data-markdown data-background="images/stbuk.jpg"
-                   class="stroke large bloomberg" data-notes="
-Have participated in, mentored at and organised 17 hackathons, across the world.
-
-In countries such as: Egypt, UAE, Italy, Germany, the US and, of course, the UK.
-">
-            Hackathons
-
-            Organiser / Mentor / Hacker
-          </section>
-
-          <section data-markdown data-notes="
-My machine learning background primarily comes from the work I did at BT and IBM
-
-I've applied machine learning to:
-    * increase global network security,
-    * assist organisations maintain their large, enterprise software estates
-    * and more recently, I've consulted for recruitment startup helper.io
-">
-            ![bt](images/bt.svg)
-            ![ibm](images/ibm.svg)
-            ![helper.io](images/helper.svg)
-
-            Applied machine learning in:
-
-            * network security
-            * enterprise software management
-            * employment
-          </section>
+        <section data-markdown="contents.md"
+                 data-separator="^\[NEXT SECTION\]"
+                 data-separator-vertical="^\[NEXT\]"
+                 data-separator-notes="^\[NOTE\]">
         </section>
       </div>
-    </body>
+    </div>
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
-
     <script>
-      // More info https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
         history: true,
-
-        // More info https://github.com/hakimel/reveal.js#dependencies
         dependencies: [
           { src: 'plugin/markdown/marked.js' },
           { src: 'plugin/markdown/markdown.js' },

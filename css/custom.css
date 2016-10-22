@@ -1,3 +1,34 @@
+/* Global Styles */
+
+.reveal section img {
+    border: 0px;
+    box-shadow: none;
+    background: none;
+}
+
+/* Background Slides */
+
+.stroke p {
+    text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+
+.stroke h2 {
+    text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+
+.large p {
+    font-size: 64px;
+    font-weight: bold;
+}
+
 /* Title */
 
 #logo-notice {
@@ -10,7 +41,29 @@
     text-align: center;
 }
 
+/* Image Sizes */
+
 img[alt="department for transport"] {
     width: 175px;
     margin: 5px;
 }
+
+img[alt="bloomberg"] {
+    width: 600px;
+}
+
+img[alt="bt"] {
+    width: 200px;
+    padding-right: 30px;
+}
+
+img[alt="ibm"] {
+    width: 200px;
+    padding-right: 30px;
+}
+
+img[alt="helper.io"] {
+    width: 85px;
+}
+
+
