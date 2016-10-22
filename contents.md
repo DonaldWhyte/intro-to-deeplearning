@@ -49,18 +49,18 @@ and more recently, I've consulted for recruitment startup helper.io
 
 
 [NEXT SECTION]
-## What is Deep Learning?
+## Machine Learning
+
+#### Very Quick Overview
 
 [NEXT]
-### Machine Learning
+**Machine learning** is an approach to achieve AI
 
-An approach to achieve artificial intelligence
+Machines learn behaviour with little human intervention <!-- .element: class="fragment" data-fragment-index="1" -->
 
-Allows machines to **learn** behaviour with little human intervention
+Programs that can adapt when exposed to new data <!-- .element: class="fragment" data-fragment-index="2" -->
 
-Programs that can **adapt** when exposed to new data
-
-Based on **pattern recognition**
+Based on pattern recognition <!-- .element: class="fragment" data-fragment-index="3" -->
 
 [NEXT]
 ![education](images/application1.jpg)
@@ -83,7 +83,6 @@ finance
 speech recognition
 image recognition
 advertising
-(even brewing!)
 
 [NEXT]
 <!-- .slide: data-background="images/ml-landscape-dec15.jpg" -->
@@ -92,21 +91,163 @@ _note_
 TODO
 
 [NEXT]
-### Deep Learning
+### Learning Types
+
+* supervised learning
+* unsupervised learning
+* semi-supervised learning
+* reinforcement learning
+
+Supervised learning will be covered here <!-- .element: class="fragment" data-fragment-index="1" -->
+
+[NEXT]
+### Supervised Learning
+
+Use labelled historical data to predict future outcomes
+
+[NEXT]
+Given some input data, predict the correct output
+
+![shapes](images/shapes.svg)
+
+What **features** of the input tell us about the output?
+
+[NEXT]
+### Feature Space
+
+* A feature is some property that describes raw input data</li>
+* Features represented as a vector in **feature space**
+* **Abstract** complexity of raw input for easier processing
+
+<center>
+  <div id="shape-plot"></div>
+</center>
+
+_note_
+In this case, we have 2 features, so inputs are 2D vector that lie in
+a 2D feature space.
+
+[NEXT]
+### Classification
+
+<div class="left-col">
+  <ul>
+    <li>Training data is used to produce a model</li>
+    <li> *f(x&#x0304;)* = *mx&#x0304;* + *c*</li>
+    <li>Model divides feature space into segments</li>
+    <li>Each segment corresponds to one <strong>output class</strong></li>
+  </ul>
+</div>
+
+<div class="right-col">
+  <center>
+    <div id="shape-plot-discriminant"></div>
+  </center>
+</div>
+
+<div class="clear-col"></div>
+
+<p>
+  Use trained model to classify new, unseen inputs
+</p>
+
+[NEXT]
+### Model Complexity and Overfitting
+
+[NEXT]
+<div class="left-col">
+  <center>
+    <div id="shape-plot-complex"></div>
+  </center>
+</div>
+<div class="right-col fragment" data-fragment="1">
+  <center>
+    <div id="shape-plot-overfitting"></div>
+  </center>
+</div>
+
+_note_
+Now in reality, your data might not be linearly separable, so we might have
+to use a more complex model to correctly discriminate between the different
+output classes.
+
+Of course, we need to be careful our models don't overfit our input training
+data, otherwise it will fail to correctly classify new, unseen data points.
+
+We can see on the diagram on the right, there are many unseen square instances
+that have been incorrectly classified as a triangle. The two triangles near
+them might just be outliers, but because the model was trained on a small
+training dataset, the feature space looked like it had a different structure.
+
+[NEXT SECTION]
+
+## Neural Networks
+
+[NEXT]
+TODO: perceptrons
+
+[NEXT]
+### Problems
+
+TODO: feature engineering + data cleaning (latter is an aside)
+
+[NEXT SECTION]
+## Deep Learning
+#### What is It?
 
 A machine learning technique
 
-Uses 'deep' neural networks
+Based on neural networks
 
-Allows TODO
+**Learns** the input features for you
 
 [NEXT]
 <!-- .slide: data-background="images/nvidia_deep_learning.png" -->
 
 [NEXT]
+### Issues with Deep Learning
+
+* Models have a tendency to overfit training data
+* Lack of *convergence*
+* Meant deep networks 
+* Computationally expensive to train
+
+[NEXT]
 ### Resurgence of Neural Networks
 
-TODO: new developments that made NNs useful again
+<table>
+    <tr>
+        <td>![Geoff Hinton](images/geoff_hinton.jpg)</td>
+        <td>![Yann Lecun](images/yann_lecun.jpg)</td>
+        <td>![Yoshua Bengio](images/yoshua_bengio.jpg)</td>
+    </tr>
+    <tr>
+        <td>Geoff Hinton</td>
+        <td>Yann Lecun</td>
+        <td>Yoshua Bengio</td>
+    </tr>
+    <tr>
+        <td>Restricted Boltzmann Machine</td>
+        <td>Sparse Representations</td>
+        <td>Stacked Autoencoders</td>
+    </tr>
+</table>
+
+_note_
+In 2006 three separate groups developed ways of overcoming the difficulties
+that many in the machine learning world encountered while trying to train
+deep neural networks. The leaders of these three groups are the fathers of
+the age of deep learning. 
+
+Before their work, the earliest layers in a deep network simply weren’t
+learning useful representations of the data. In many cases they weren’t
+learning anything at all.
+
+Instead they were staying close to their random initialization because of the nature of the training algorithm for neural networks. 
+
+Using different techniques, each of these three groups was able to get these
+early layers to learn useful representations, which led to much more powerful
+neural networks.
 
 [NEXT]
 ### Resurgence of Neural Networks
@@ -152,7 +293,30 @@ TODO
 [NEXT SECTION]
 ## Deep Learning
 
+#### Neural Networks
+
+[NEXT]
+TODO
+
+
+[NEXT SECTION]
+## Deep Learning
+
 #### Technical Overview
+
+[NEXT]
+TODO
+
+
+[NEXT SECTION]
+## Tensorflow
+
+[NEXT]
+TODO
+
+
+[NEXT SECTION]
+## Summary
 
 [NEXT]
 TODO
