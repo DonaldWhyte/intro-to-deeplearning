@@ -48,13 +48,32 @@
         <section data-markdown="contents.md"
                  data-separator="^\[NEXT SECTION\]"
                  data-separator-vertical="^\[NEXT\]"
-                 data-separator-notes="^\[NOTE\]">
+                 data-separator-notes="^_note_">
+        </section>
+
+        <section>
+          <h3>Get in Touch</h3>
+
+          <div class="left-col">
+            <div class="donald"></div>
+          </div>
+          <div class="right-col">
+            <div class="contact-details">
+              <a href="mailto:donaldwhyte0@gmail.com">donaldwhyte0@gmail.com</a>
+              <a href="ttp://twitter.com/donald_whyte">@donald_whyte</a>
+              <a href="http://github.com/DonaldWhyte">http://github.com/DonaldWhyte</a>
+            </div>
+          </div>
         </section>
       </div>
     </div>
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
+
+    <script src="lib/js/jquery-latest.min.js"></script>
+    <script src="lib/js/highcharts.js"></script>
+
     <script>
       Reveal.initialize({
         history: true,
@@ -64,6 +83,86 @@
           { src: 'plugin/notes/notes.js', async: true },
           { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
+      });
+    </script>
+
+    <script>
+      function loadChartEvent() {
+        $("text:contains('Highcharts.com')").remove();
+      }
+
+      Reveal.addEventListener( 'ready', function(event) {
+        $('#deep-learning-growth-chart').highcharts({
+          chart: {
+            type: 'column',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            events: {
+              load: loadChartEvent
+            },
+            marginTop: 64,
+            marginBottom: 32
+          },
+          title: {
+            text: ''
+          },
+          xAxis: {
+            categories: [
+              '2015', '2016', '2017', '2018', '2019',
+              '2020', '2021', '2022', '2023', '2024'
+            ],
+            crosshair: true,
+            labels: {
+              style: {
+                color: 'white',
+                'font-weight': 'strong',
+                'font-size': '18px'
+              }
+            }
+          },
+          yAxis: {
+            min: 0,
+            tickInterval: 2000,
+            title: {
+              text: '$ millions',
+              style: {
+                color: 'white',
+                'font-weight': 'strong',
+                'font-size': '28px'
+              }
+            },
+            labels: {
+              formatter: function () {
+                return '$' + this.value
+              },
+              style: {
+                color: 'white',
+                'font-weight': 'strong',
+                'font-size': '18px'
+              }
+            }
+          },
+          legend: {
+            enabled: false
+          },
+          tooltip: {
+            enabled: false
+          },
+          exporting: {
+            enabled: false
+          },
+          plotOptions: {
+            column: {
+              pointPadding: 0.2,
+              borderWidth: 0
+            }
+          },
+          series: [
+            {
+              name: 'Revenue',
+              data: [ 100, 200, 400, 800, 1900, 3950, 6000, 7800, 9600, 10200 ]
+            }
+          ]
+        });
       });
     </script>
   </body>

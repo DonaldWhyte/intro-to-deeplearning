@@ -6,6 +6,13 @@
     background: none;
 }
 
+/* Text Sizes */
+
+p.small,
+a.small {
+    font-size: 28px;
+}
+
 /* Background Slides */
 
 .stroke p {
@@ -41,6 +48,32 @@
     text-align: center;
 }
 
+/* Contact Details */
+
+.donald {
+    background-image: url('../images/donald.jpg');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 125px;
+    width: 400px;
+    height: 400px;
+}
+
+div.contact-details {
+    margin-top: 125px;
+}
+
+.left-col {
+    width: 50%;
+    float: left;
+}
+
+.right-col {
+    width: 50%;
+    float: right;
+}
+
+
 /* Image Sizes */
 
 img[alt="department for transport"] {
@@ -66,4 +99,26 @@ img[alt="helper.io"] {
     width: 85px;
 }
 
+img[alt="education"] {
+    width: 300px;
+}
 
+img[alt="security"] {
+    width: 300px;
+}
+
+img[alt="robotics"] {
+    width: 300px;
+}
+
+img[alt="finance"] {
+    width: 300px;
+}
+
+img[alt="speech recognition"] {
+    width: 300px;
+}
+
+img[alt="advertising"] {
+    width: 300px;
+}
