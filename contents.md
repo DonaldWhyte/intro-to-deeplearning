@@ -184,7 +184,96 @@ training dataset, the feature space looked like it had a different structure.
 ## Neural Networks
 
 [NEXT]
-TODO: perceptrons
+<!-- .slide: data-background-video="videos/neuron.mp4" data-background-video-loop="loop" data-background-video-muted="muted" -->
+
+_note_
+TODO
+
+[NEXT]
+<!-- .slide: data-background-video="videos/neural_networks.mp4" data-background-video-loop="loop" data-background-video-muted -->
+
+_note_
+TODO
+
+[NEXT]
+### The Mighty Perceptron
+
+* Algorithm for supervised learning
+* Modelled after a neuron in the human brain
+* Linear classifier
+    - splits feature space using a straight line
+
+[NEXT]
+<!-- .slide: data-background-color="white" -->
+![perceptron](images/perceptron.svg)
+
+_note_
+TODO
+
+[NEXT]
+### Perceptron Definition
+
+For `n` features, the perceptron is defined as:
+
+* `n`-dimensional weight vector `w` 
+* bias scalar `b`
+* activation function `f(x)`
+
+[NEXT]
+Input: $$ x = \left(x_0, x_1, \cdots, w_n\right) $$
+
+Weights: $$ w = \left(w_0, w_1, \cdots, w_n\right) $$
+
+Bias: $b$
+
+Weighted Sum:
+
+$$ s = \left(\sum_{i=0}^{n} {w_ix_i}\right) + b $$
+
+[NEXT]
+### Activation Function
+
+<div class="fragment fade-out" data-fragment-index="1">
+$$
+  f(x) = \begin{cases}1 & \text{if }s > 0\\\\0
+  & \text{otherwise}\end{cases}
+$$
+</div>
+
+<div class="fragment fade-in" data-fragment-index="1">
+$$
+  f(x) = \begin{cases}1 & \text{if }w \cdot x + b > 0\\\\0
+  & \text{otherwise}\end{cases}
+$$
+</div>
+
+[NEXT]
+### Activation Functions
+
+PLACEHOLDER<!-- .element id="activation-functions-chart" -->
+
+_note_
+TODO
+
+[NEXT]
+### Feed-Forward Neural Networks
+
+TODO
+
+[NEXT]
+### Training FFNNs
+
+TODO
+
+[NEXT]
+### Backpropogation
+
+TODO
+
+[NEXT]
+### Demo
+
+TODO?
 
 [NEXT]
 ### Problems
@@ -206,14 +295,27 @@ Based on neural networks
 
 [NEXT]
 ### Issues with Deep Learning
+##### (until 2006)
 
-* Models have a tendency to overfit training data
-* Lack of *convergence*
-* Meant deep networks 
 * Computationally expensive to train
+* Models have a tendency to overfit training data
+* Lack of *convergence* in weights
+* Meant deep networks were useless in the real world
+    - no better than random initialisation of weights
+
+_note_
+The earliest layers in a deep network simply weren't learning useful
+representations of the data. In many cases they weren't learning anything at
+all.
+
+Instead they were staying close to their random weight initialisation because
+of the nature of backpropagation. This meant the deep networks were completely
+useless when used on real world data. They just didn't generalise at all.
 
 [NEXT]
 ### Resurgence of Neural Networks
+
+2006 and beyond
 
 <table>
     <tr>
@@ -227,7 +329,7 @@ Based on neural networks
         <td>Yoshua Bengio</td>
     </tr>
     <tr>
-        <td>Restricted Boltzmann Machine</td>
+        <td>Restricted Boltzmann<br />Machine</td>
         <td>Sparse Representations</td>
         <td>Stacked Autoencoders</td>
     </tr>
@@ -242,8 +344,6 @@ the age of deep learning.
 Before their work, the earliest layers in a deep network simply weren’t
 learning useful representations of the data. In many cases they weren’t
 learning anything at all.
-
-Instead they were staying close to their random initialization because of the nature of the training algorithm for neural networks. 
 
 Using different techniques, each of these three groups was able to get these
 early layers to learn useful representations, which led to much more powerful
@@ -293,15 +393,6 @@ TODO
 [NEXT SECTION]
 ## Deep Learning
 
-#### Neural Networks
-
-[NEXT]
-TODO
-
-
-[NEXT SECTION]
-## Deep Learning
-
 #### Technical Overview
 
 [NEXT]
@@ -310,6 +401,7 @@ TODO
 
 [NEXT SECTION]
 ## Tensorflow
+#### Deep Learning in Practice
 
 [NEXT]
 TODO

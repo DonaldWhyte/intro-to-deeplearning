@@ -107,7 +107,7 @@ module.exports = function(grunt) {
 				'js/**',
 				'lib/**',
 				'images/**',
-				'demo/data/**',
+				'videos/**',
 				'plugin/**',
 				'**.md'
 			]
