@@ -98,6 +98,11 @@ div.contact-details {
     width: 450px;
 }
 
+#step-activation-function-chart,
+#all-activation-functions-chart {
+    margin-top: 32px;
+}
+
 /* Image Sizes */
 
 img[alt="department for transport"] {
@@ -161,4 +166,9 @@ img[alt="Yoshua Bengio"] {
 
 img[alt="perceptron"] {
     width: 800px;
+}
+
+img[alt="perceptron_learning"] {
+    zoom: 0.5; /* all browsers */
+    -moz-transform: scale(0.5);  /* Firefox */
 }

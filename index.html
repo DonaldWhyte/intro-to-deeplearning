@@ -296,15 +296,23 @@
           ]
         };
 
-        var activationFunctionsChart =  {
+        var stepActivationFunctionChart =  {
           chart: {
             backgroundColor: 'rgba(0, 0, 0, 0)',
             events: { load: loadChartEvent },
             marginTop: 32,
-            marginBottom: 32
+            marginBottom: 64
           },
           title: { text: '' },
           xAxis: {
+            title: {
+              text: 'Weighted Sum (x)',
+              style: {
+                color: 'white',
+                'font-weight': 'strong',
+                'font-size': '32px'
+              }
+            },
             min: -2,
             max: 2,
             tickInterval: 1.0,
@@ -319,10 +327,18 @@
             }
           },
           yAxis: {
+            title: {
+              text: 'f(x)',
+              style: {
+                color: 'white',
+                'font-weight': 'strong',
+                'font-style': 'italic',
+                'font-size': '32px'
+              }
+            },
             min: -0.2,
             max: 1.2,
             tickInterval: 0.2,
-            title: { text: '' },
             labels: {
               style: {
                 color: 'white',
@@ -358,42 +374,46 @@
               data: [
                   [-2,  0], [0, 0], [0, 1], [2, 1]
               ]
-            },
-            {
-              name: 'Sigmoid',
-              lineWidth: 5,
-              color: '#ED561B',
-              type: 'spline',
-              data: (function() {
-                var STEEPNESS = 3.0;
-                function sigmoid(t) {
-                  var exponent = STEEPNESS * -t;
-                  return 1 / (1 + Math.exp(exponent));
-                }
-
-                // Points to generate for curve
-                var MIN_X = -2;
-                var MAX_X = 2;
-                var POINT_INTERVAL = 0.001;
-                var POINTS_TO_GENERATE = Math.abs(MAX_X - MIN_X) / POINT_INTERVAL;
-
-                var data = [];
-                for (var i = 0; i < POINTS_TO_GENERATE; ++i) {
-                  var x = MIN_X + (i * POINT_INTERVAL)
-                  data.push([x, sigmoid(x)]);
-                }
-                return data;
-              })()
             }
           ]
         };
+
+        var allActivationFunctionsChart = jQuery.extend(
+          true, {}, stepActivationFunctionChart);
+        allActivationFunctionsChart['series'].push({
+          name: 'Sigmoid',
+          lineWidth: 5,
+          color: '#ED561B',
+          type: 'spline',
+          data: (function() {
+            var STEEPNESS = 3.0;
+            function sigmoid(t) {
+              var exponent = STEEPNESS * -t;
+              return 1 / (1 + Math.exp(exponent));
+            }
+
+            // Points to generate for curve
+            var MIN_X = -2;
+            var MAX_X = 2;
+            var POINT_INTERVAL = 0.001;
+            var POINTS_TO_GENERATE = Math.abs(MAX_X - MIN_X) / POINT_INTERVAL;
+
+            var data = [];
+            for (var i = 0; i < POINTS_TO_GENERATE; ++i) {
+              var x = MIN_X + (i * POINT_INTERVAL)
+              data.push([x, sigmoid(x)]);
+            }
+            return data;
+          })()
+        });
 
         $('#shape-plot').highcharts(baseShapeChart);
         $('#shape-plot-discriminant').highcharts(shapeChartWithDiscriminant);
         $('#shape-plot-complex').highcharts(shapeChartComplex);
         $('#shape-plot-overfitting').highcharts(shapeChartOverfitting);
         $('#deep-learning-growth-chart').highcharts(deepLearningGrowthChart);
-        $('#activation-functions-chart').highcharts(activationFunctionsChart);
+        $('#step-activation-function-chart').highcharts(stepActivationFunctionChart);
+        $('#all-activation-functions-chart').highcharts(allActivationFunctionsChart);
 
           MathJax.Hub.Rerender();
       });

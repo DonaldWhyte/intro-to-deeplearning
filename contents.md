@@ -233,14 +233,22 @@ $$ s = \left(\sum_{i=0}^{n} {w_ix_i}\right) + b $$
 [NEXT]
 ### Activation Function
 
-<div class="fragment fade-out" data-fragment-index="1">
+Simulates the 'firing' of a physical neuron
+
+1 = neuron fired
+
+0 = neuron did not fire
+
+<div class="fragment fade-in" data-fragment-index="1">
+<div class="fragment fade-out" data-fragment-index="2">
 $$
   f(x) = \begin{cases}1 & \text{if }s > 0\\\\0
   & \text{otherwise}\end{cases}
 $$
 </div>
+</div>
 
-<div class="fragment fade-in" data-fragment-index="1">
+<div class="fragment fade-in" data-fragment-index="2">
 $$
   f(x) = \begin{cases}1 & \text{if }w \cdot x + b > 0\\\\0
   & \text{otherwise}\end{cases}
@@ -248,12 +256,66 @@ $$
 </div>
 
 [NEXT]
-### Activation Functions
+### Step Function
 
-PLACEHOLDER<!-- .element id="activation-functions-chart" -->
+* Produces binary output from real-valued sum
+* Used for for binary classification
+  - e.g. Triangle (0) or Square(1)
+
+PLACEHOLDER<!-- .element id="step-activation-function-chart" -->
+
+[NEXT]
+### Sigmoid Function
+
+* Can make perceptron produce continuous output
+* Useful for regression (predicting continuous values)
+  - e.g. temperature
+
+PLACEHOLDER<!-- .element id="all-activation-functions-chart" -->
 
 _note_
-TODO
+We'll find having a continuous activation function very useful for when we
+combine many perceptrons together. 
+
+[NEXT]
+How do we find `w` and `b`?
+
+[NEXT]
+### Perceptron Learning Algorithm
+
+Takes training dataset (known input/output pairs)
+
+Algorithm which learns correct weights and bias
+
+Guaranteed to create line that splits classes
+
+(if data is linearly separable)<!-- .element class="small" -->
+
+_note_
+Details of the algorithm are not covered here for brevity
+
+[NEXT]
+<!-- .slide: data-background-color="white" data-transition="none" -->
+![perceptron_learning](images/perceptron_learning1.png)
+
+[NEXT]
+<!-- .slide: data-background-color="white" data-transition="none" -->
+![perceptron_learning](images/perceptron_learning2.png)
+
+[NEXT]
+<!-- .slide: data-background-color="white" data-transition="none" -->
+![perceptron_learning](images/perceptron_learning3.png)
+
+[NEXT]
+<!-- .slide: data-background-color="white" data-transition="none" -->
+![perceptron_learning](images/perceptron_learning4.png)
+
+[NEXT]
+### Problem
+
+Most data is not linearly separable
+
+Need a *network* of neurons to discriminate non-linear data
 
 [NEXT]
 ### Feed-Forward Neural Networks
