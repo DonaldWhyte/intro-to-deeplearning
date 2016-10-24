@@ -209,3 +209,16 @@ img[alt="gpu"],
 img[alt="datacentre"] {
     width: 300px;
 }
+
+img[alt="tensorflow"] {
+    width: 150px;
+}
+
+img[alt="self_driving_car"] {
+    width: 320px;
+}
+
+img[alt="image_recognition"],
+img[alt="speech_synthesis"] {
+    width: 300px;
+}

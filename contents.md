@@ -88,7 +88,18 @@ advertising
 <!-- .slide: data-background="images/ml-landscape-dec15.jpg" -->
 
 _note_
-TODO
+Nowadays, machine learning is everywhere. You can't avoid it.
+
+When you look on Facebook, machine learning determines what you see. When you
+pay for your lunch with your credit card, machine learning decides whether the
+transaction goes through, or if you're a fraud.
+
+Global markets are affected by the machine learning algorithms hedge funds
+execute.
+
+Behind me is a tiny portion of the machine learning focused companies out there
+today. ML has spurred innovation in dozens of industries, and it's slowly
+Touching more and more.
 
 [NEXT]
 ### Learning Types
@@ -198,7 +209,7 @@ Be careful of overfitting!<!-- .element: class="fragment" data-fragment-index="1
 <!-- .slide: data-background-video="videos/neuron.mp4" data-background-video-loop="loop" data-background-video-muted -->
 
 _note_
-TODO: figure out how to mute, make single neuron video better
+TODO
 
 [NEXT]
 <!-- .slide: data-background-video="videos/neural_networks.mp4" data-background-video-loop="loop" data-background-video-muted -->
@@ -216,9 +227,6 @@ TODO
 [NEXT]
 <!-- .slide: data-background-color="white" -->
 ![perceptron](images/perceptron.svg)
-
-_note_
-TODO
 
 [NEXT]
 ### Perceptron Definition
@@ -708,9 +716,21 @@ PLACEHOLDER<!-- .element id="modern-activation-functions-chart" -->
 [NEXT]
 ### Modern Uses of Deep Learning
 
-Widely used in image recognition
+Widely used for image and sound processing
 
-TODO: examples (driver-less cards and two others)
+Both recognition and generation
+
+![self_driving_car](images/self_driving_car.jpg)
+![image_recognition](images/image_recognition.png)
+![speech_synthesis](images/speech_synthesis.jpg)
+
+_note_
+Image recognition: Google ImageNet
+Speech synthesis: Google DeepMind WaveNet
+
+An important thing to note is that deep learning enables more than
+just recognition. It enables the *generation* of content as well. This
+capability is beyond most machine learning techniques.
 
 [NEXT]
 #### Projected Deep Learning Software Revenue
@@ -743,6 +763,7 @@ TODO
 [NEXT SECTION]
 ## Tensorflow
 #### Deep Learning in Practice
+![tensorflow](images/tensorflow.png)
 
 [NEXT]
 TODO
@@ -771,10 +792,11 @@ TODO
 </div>
 <div class="right-col">
   <div class="contact-details">
-[donaldwhyte0@gmail.com](mailto:donaldwhyte0@gmail.com)
+    [donaldwhyte0@gmail.com](mailto:donaldwhyte0@gmail.com)
 
-[@donald_whyte](http://twitter.com/donald_whyte)
+    [@donald_whyte](http://twitter.com/donald_whyte)
 
-[GitHub](http://github.com/DonaldWhyte)
+    <br />
+    [GitHub](http://github.com/DonaldWhyte)
   </div>
 </div>
