@@ -179,15 +179,26 @@ that have been incorrectly classified as a triangle. The two triangles near
 them might just be outliers, but because the model was trained on a small
 training dataset, the feature space looked like it had a different structure.
 
+[NEXT]
+### Takeaways
+
+* Write programs that convert raw input to feature vectors
+* Build a model to divide feature space into classes
+  - using training dataset
+* Hundreds of model types
+* Each divide feature space in different ways
+
+Be careful of overfitting!<!-- .element: class="fragment" data-fragment-index="1" -->
+
 [NEXT SECTION]
 
 ## Neural Networks
 
 [NEXT]
-<!-- .slide: data-background-video="videos/neuron.mp4" data-background-video-loop="loop" data-background-video-muted="muted" -->
+<!-- .slide: data-background-video="videos/neuron.mp4" data-background-video-loop="loop" data-background-video-muted -->
 
 _note_
-TODO
+TODO: figure out how to mute, make single neuron video better
 
 [NEXT]
 <!-- .slide: data-background-video="videos/neural_networks.mp4" data-background-video-loop="loop" data-background-video-muted -->
@@ -198,10 +209,9 @@ TODO
 [NEXT]
 ### The Mighty Perceptron
 
-* Algorithm for supervised learning
+* Type of supervised learning model
+* Linearly splits feature space
 * Modelled after a neuron in the human brain
-* Linear classifier
-    - splits feature space using a straight line
 
 [NEXT]
 <!-- .slide: data-background-color="white" -->
@@ -220,15 +230,13 @@ For `n` features, the perceptron is defined as:
 * activation function `f(x)`
 
 [NEXT]
-Input: $$ x = \left(x_0, x_1, \cdots, w_n\right) $$
+|              |                                                |
+| ------------ | ---------------------------------------------- |
+| Input        | $x = \left(x_0, x_1, \cdots, w_n\right)$       |
+| Weights      | $w = \left(w_0, w_1, \cdots, w_n\right)$       |
+| Bias         | $b$                                            |
+| Weighted Sum | $s = \left(\sum_{i=0}^{n} {w_ix_i}\right) + b$ |
 
-Weights: $$ w = \left(w_0, w_1, \cdots, w_n\right) $$
-
-Bias: $b$
-
-Weighted Sum:
-
-$$ s = \left(\sum_{i=0}^{n} {w_ix_i}\right) + b $$
 
 [NEXT]
 ### Activation Function
@@ -238,6 +246,8 @@ Simulates the 'firing' of a physical neuron
 1 = neuron fired
 
 0 = neuron did not fire
+
+---
 
 <div class="fragment fade-in" data-fragment-index="1">
 <div class="fragment fade-out" data-fragment-index="2">
@@ -278,21 +288,24 @@ We'll find having a continuous activation function very useful for when we
 combine many perceptrons together. 
 
 [NEXT]
-How do we find `w` and `b`?
+How do we **learn** `w` and `b`?
 
 [NEXT]
 ### Perceptron Learning Algorithm
 
-Takes training dataset (known input/output pairs)
-
 Algorithm which learns correct weights and bias
 
-Guaranteed to create line that splits classes
+Use training dataset to incrementally train perceptron
+
+Guaranteed to create line that divides output classes
 
 (if data is linearly separable)<!-- .element class="small" -->
 
 _note_
-Details of the algorithm are not covered here for brevity
+Details of the algorithm are not covered here for brevity.
+
+Training dataset, which is a collection of known input/output pairs
+(typically produced by humans manually labelling input).
 
 [NEXT]
 <!-- .slide: data-background-color="white" data-transition="none" -->
@@ -320,25 +333,103 @@ Need a *network* of neurons to discriminate non-linear data
 [NEXT]
 ### Feed-Forward Neural Networks
 
+Most common neural network architecture
+
+Provides classification or regression
+
+Uses *multiple* perceptrons in a layered fashion
+
+[NEXT]
+<!-- .slide: data-background-color="white" -->
+![feed_forward_neural_network_twoclass](images/ffnn_twoclass.png)
+
+[NEXT]
+<!-- .slide: data-background-color="white" -->
+![feed_forward_neural_network_nclass](images/ffnn_nclass.png)
+
+[NEXT]
+### Classic Architecture
+
+|        |   |
+| ------ | - |
+| Input  | `n` nodes, set to the value of each feature |
+| Hidden | 'TODO' |
+| Output | `m` nodes, set to probability input is in a class |
+
+where `n` is feature count and `m` is class count.
+
+_note_
 TODO
+
+[NEXT]
+### Neuron Connectivity
+
+Each layer is **fully connected** to the next
+
+All nodes in layer $l$ are connected to nodes in layer $l + 1$
+
+Every single connection has a weight
+
+[NEXT]
+Produces a **weight matrix**
+
+![weight_matrix](images/weight_matrix.svg)
+
+(also: no more biases)<!-- .element class="small" -->
+
+_note_
+Weight matrix produced using the following Latex equation:
+W = \begin{bmatrix} w_{00} & w_{01} & \cdots & w_{0n} \\ w_{10} & w_{11} & \cdots & w_{1n} \\ \vdots & \vdots & \vdots & \vdots \\ w_{m0} & w_{m1} & \cdots & w_{mn} \end{bmatrix}
+
+[NEXT]
+### Non-Linearity
+
+* **Hidden** layers used to separate non-linear data
+* Using linear activation functions means network is linear
+* Non-linear activation functions
+  - sigmoid
 
 [NEXT]
 ### Training FFNNs
 
+* Define a **loss function**
+  - higher output means network is making more errors
+* Learn the weight matrix that minimises this function
+* Use **backpropagation** to do this
+
+[NEXT]
+### Backpropagation
+
 TODO
 
 [NEXT]
-### Backpropogation
+### Gradient Descent
 
-TODO
+Backpropagation is equivalent to **gradient descent**
 
-[NEXT]
-### Demo
-
-TODO?
+![gradient_descent](images/gradient_descent.svg)
 
 [NEXT]
-### Problems
+Many types of gradient descent
+
+Batch, mini-batch, stochastic
+
+![Overview of Gradient Descent Optimisation Algorithms](http://sebastianruder.com/optimizing-gradient-descent/)
+
+_note_
+There are many types of gradient descent for optimising weight matrices
+and minimising loss. We don't have the time to go through them here. Here's
+a link to amazing blog post that does an excellent job of summarising the
+different types of gradient descent optimisers.
+
+[NEXT]
+### Universal Approximation Theorem
+
+> A feed-forward neural network with a single hidden layer that has a finite
+> number of nodes, can approximate any continuous function
+
+[NEXT]
+### Limitations in Practice
 
 TODO: feature engineering + data cleaning (latter is an aside)
 
@@ -367,8 +458,8 @@ Based on neural networks
 
 _note_
 The earliest layers in a deep network simply weren't learning useful
-representations of the data. In many cases they weren't learning anything at
-all.
+representations of the data. In many cases they weren't learning anything
+at all.
 
 Instead they were staying close to their random weight initialisation because
 of the nature of backpropagation. This meant the deep networks were completely
@@ -474,3 +565,30 @@ TODO
 
 [NEXT]
 TODO
+
+
+[NEXT SECTION]
+### Futher Reading
+
+[Neural Network FAQs](http://www.faqs.org/faqs/ai-faq/neural-nets/)
+
+### Slides
+
+[http://donaldwhyte.co.uk/intro-to-deeplearning](http://donaldwhyte.co.uk/intro-to-deeplearning)
+
+[NEXT]
+### Get In Touch
+
+<div class="left-col">
+  <div class="donald"></div>
+</div>
+<div class="right-col">
+  <div class="contact-details">
+[donaldwhyte0@gmail.com](mailto:donaldwhyte0@gmail.com)
+
+[@donald_whyte](http://twitter.com/donald_whyte)
+
+[GitHub](http://github.com/DonaldWhyte)
+  </div>
+</div>
+</section>
