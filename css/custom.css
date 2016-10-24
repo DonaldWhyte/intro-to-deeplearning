@@ -13,6 +13,18 @@ a.small {
     font-size: 28px;
 }
 
+.small td,
+.small th {
+    font-size: 32px;
+}
+
+/* Padding Styles */
+
+.low-padding p,
+.low-padding img {
+    margin: 0px !important;
+}
+
 /* Background Slides */
 
 .stroke p {
@@ -175,4 +187,8 @@ img[alt="perceptron_learning"] {
 
 img[alt="weight_matrix"] {
     width: 600px;
+}
+
+img[alt="gradient_descent"] {
+    width: 750px;
 }

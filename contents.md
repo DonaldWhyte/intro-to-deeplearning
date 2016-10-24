@@ -341,34 +341,41 @@ Uses *multiple* perceptrons in a layered fashion
 
 [NEXT]
 <!-- .slide: data-background-color="white" -->
-![feed_forward_neural_network_twoclass](images/ffnn_twoclass.png)
+![feed_forward_neural_network_twoclass](images/ffnn_twoclass.svg)
 
 [NEXT]
 <!-- .slide: data-background-color="white" -->
-![feed_forward_neural_network_nclass](images/ffnn_nclass.png)
+![feed_forward_neural_network_nclass](images/ffnn_nclass.svg)
 
 [NEXT]
-### Classic Architecture
+### Architecture for Classification
 
 |        |   |
 | ------ | - |
 | Input  | `n` nodes, set to the value of each feature |
-| Hidden | 'TODO' |
+| Hidden | where the magic happens |
 | Output | `m` nodes, set to probability input is in a class |
 
 where `n` is feature count and `m` is class count.
 
 _note_
-TODO
+The hidden layers is where all the smarts comes in. I could spend days
+discussing how to choose the number of hidden layers and nodes in each
+layer.
+
+It depends on so many factors. The number of input features, the distribution
+of inputs across feature space. 
 
 [NEXT]
 ### Neuron Connectivity
 
-Each layer is **fully connected** to the next
+* Each layer is **fully connected** to the next
+* All nodes in layer $l$ are connected to nodes in layer $l + 1$
+* Every single connection has a weight
 
-All nodes in layer $l$ are connected to nodes in layer $l + 1$
-
-Every single connection has a weight
+_note_
+Standard neural network architectures make each layer fully connected
+to the next. 
 
 [NEXT]
 Produces a **weight matrix**
@@ -385,36 +392,140 @@ W = \begin{bmatrix} w_{00} & w_{01} & \cdots & w_{0n} \\ w_{10} & w_{11} & \cdot
 ### Non-Linearity
 
 * **Hidden** layers used to separate non-linear data
-* Using linear activation functions means network is linear
-* Non-linear activation functions
-  - sigmoid
+* Linear activation functions means network is linear
+* Use n-linear activation functions instead (e.g. sigmoid)
+
+PLACEHOLDER<!-- .element id="sigmoid-activation-function-chart" -->
 
 [NEXT]
 ### Training FFNNs
 
+Learn the **weight matrix**!
+
+[NEXT]
 * Define a **loss function**
   - higher output means network is making more errors
 * Learn the weight matrix that minimises this function
-* Use **backpropagation** to do this
+* Use **gradient descent** to do this
+
+[NEXT]
+### Gradient Descent Optimiser
+
+Keep adjusting neuron weights
+
+Such that loss/error function is minimised
+
+Uses derivatives of activation functions to adjust weights
+
+So we need continuous activation functions like sigmoid!
+
+[NEXT]
+<!-- .slide: data-background-color="white" class="small low-padding" -->
+![gradient_descent](images/gradient_descent.png)
+
+|               |              |
+| ------------- | ------------ |
+| Weight matrix | $w$          |
+| Loss function | $J(w)$       |
+| Loss minmina  | $J_{min}(w)$ |
+
+_note_
+We can describe the principle behind gradient descent as “climbing down a
+hill” until a local or global minimum is reached.
+
+At each step, we take a step into the opposite direction of the gradient.
+
+The step size is determined by the value of the **learning rate** as well
+as the slope of the gradient.
+
+Source of diagram: http://sebastianraschka.com/Articles/2015_singlelayer_neurons.html#gradient-descent
+
 
 [NEXT]
 ### Backpropagation
 
-TODO
+* Equivalent to gradient descent
+* *The* training algorithm for neural networks
+* For each feature vector in the training dataset, do a:
+  1. forward pass
+  2. backward pass
+
+_note_
+Backpropagation is the workhorse of neural network training. Some
+variation of this algorithm is almost always used to train nets.
+
+For a data point in our training dataset, we run two steps.
+
+Visualisation of learning by backpropagation:
+http://www.emergentmind.com/neural-network
 
 [NEXT]
-### Gradient Descent
+<!-- .slide: data-background-color="white" data-transition="none" -->
+### Forward Pass
+![backprop_forward_pass](images/ffnn_nclass.svg)
 
-Backpropagation is equivalent to **gradient descent**
-
-![gradient_descent](images/gradient_descent.svg)
+_note_
+1. Start with random weights
+2. Feed input feature vector to input layer
+3. Let the first layer evaluate their activation using
+4. Feed activation into next layer, repeat for all layers
+5. Finally, compute output layer values
 
 [NEXT]
-Many types of gradient descent
+<!-- .slide: data-background-color="white" data-transition="none" -->
+### Forward Pass
+![backprop_forward_pass](images/backprop_forwardpass_0.svg)
+
+[NEXT]
+<!-- .slide: data-background-color="white" data-transition="none" -->
+### Forward Pass
+![backprop_forward_pass](images/backprop_forwardpass_1.svg)
+
+[NEXT]
+<!-- .slide: data-background-color="white" data-transition="none" -->
+### Forward Pass
+![backprop_forward_pass](images/backprop_forwardpass_2.svg)
+
+[NEXT]
+<!-- .slide: data-background-color="white" data-transition="none" -->
+### Backward Pass
+![backprop_back_pass](images/backprop_backpass_0.svg)
+
+_note_
+1. Compare the target output to the actual output
+  - calculate the errors of the output neurons
+2. Calculate weight updates associated with output neurons using perceptron learning principle
+  - same adjustments as the ones made in the Perceptron Algorithm)
+3. For each output neuron, propagate values back to the previous layer
+4. Calculate weight updates associated with hidden neurons using perceptron learning principle
+5. Update weights, then repeat from step 1 (performing another forward and backward pass) until the weight values converge
+
+[NEXT]
+<!-- .slide: data-background-color="white" data-transition="none" -->
+### Backward Pass
+![backprop_back_pass](images/backprop_backpass_1.svg)
+
+[NEXT]
+<!-- .slide: data-background-color="white" data-transition="none" -->
+### Backward Pass
+![backprop_back_pass](images/backprop_backpass_2.svg)
+
+[NEXT]
+<!-- .slide: data-background-color="white" data-transition="none" -->
+### Backward Pass
+![backprop_back_pass](images/backprop_backpass_3.svg)
+
+[NEXT]
+After training the network, we obtain weights which minimise the loss/error 
+
+Classify new, unseen inputs by running them through the **forward pass** step
+
+[NEXT]
+Many types of gradient descent / backpropagation
 
 Batch, mini-batch, stochastic
 
-![Overview of Gradient Descent Optimisation Algorithms](http://sebastianruder.com/optimizing-gradient-descent/)
+[Overview of Gradient Descent Optimisation Algorithms](http://sebastianruder.com/optimizing-gradient-descent/)
 
 _note_
 There are many types of gradient descent for optimising weight matrices
