@@ -440,7 +440,6 @@ as the slope of the gradient.
 
 Source of diagram: http://sebastianraschka.com/Articles/2015_singlelayer_neurons.html#gradient-descent
 
-
 [NEXT]
 ### Backpropagation
 
@@ -540,17 +539,41 @@ different types of gradient descent optimisers.
 > number of nodes, can approximate any continuous function
 
 [NEXT]
-### Limitations in Practice
+### Limitations of Shallow Networks
 
-TODO: feature engineering + data cleaning (latter is an aside)
+* Complex data requires thousands of neurons in the hidden layer
+* Computationally expensive to train large networks
+* Complex models have a tendency to overfit training data
+* No way of understanding what's going on inside the large hidden layer
+
+_note_
+Despite it being *theoretically* possible for single layer neural networks to approximate *any* function and split *any* feature space, it turned out
+creating such networks was not practical.
+
+The networks either took *way* too long to train or overfit the training data.
+In other words, researchers couldn't find a way to build single layer networks
+that *generalised* to unseen data.
+
+[NEXT]
+### Feature Engineering
+
+* Most shallow networks required data to be pre-processing
+  - i.e. feature extraction
+* Hand-crafting features is a time-consuming, human-driven process 
+* *Real* intelligence was still in the human who chose the features
+
+[NEXT]
+Why not turn to deep learning?
+
 
 [NEXT SECTION]
 ## Deep Learning
-#### What is It?
+### What Is It and Why Now?
 
+[NEXT]
 A machine learning technique
 
-Based on neural networks
+Neural networks with many hidden layers
 
 **Learns** the input features for you
 
@@ -558,16 +581,18 @@ Based on neural networks
 <!-- .slide: data-background="images/nvidia_deep_learning.png" -->
 
 [NEXT]
-### Issues with Deep Learning
+### Core Issue with Deep Learning
 ##### (until 2006)
 
-* Computationally expensive to train
-* Models have a tendency to overfit training data
-* Lack of *convergence* in weights
-* Meant deep networks were useless in the real world
-    - no better than random initialisation of weights
+* Backpropagation could not train deep networks
+* Lack of convergence of weights in early layers
+* Vanishing gradient problem
+* Deep networks contain much more neurons/connections
+  - very expensive to train
 
 _note_
+Early layers' weights were no better than random initialisation.
+
 The earliest layers in a deep network simply weren't learning useful
 representations of the data. In many cases they weren't learning anything
 at all.
@@ -576,12 +601,15 @@ Instead they were staying close to their random weight initialisation because
 of the nature of backpropagation. This meant the deep networks were completely
 useless when used on real world data. They just didn't generalise at all.
 
+This was due to the **vanishing gradient problem**. This happens because
+backpropagation involves a sequence of multiplications that invariably
+result in smaller derivatives for earlier layers.
+
 [NEXT]
 ### Resurgence of Neural Networks
+#### (2006 and beyond)
 
-2006 and beyond
-
-<table>
+<table class="centered-text borderless">
     <tr>
         <td>![Geoff Hinton](images/geoff_hinton.jpg)</td>
         <td>![Yann Lecun](images/yann_lecun.jpg)</td>
@@ -592,11 +620,6 @@ useless when used on real world data. They just didn't generalise at all.
         <td>Yann Lecun</td>
         <td>Yoshua Bengio</td>
     </tr>
-    <tr>
-        <td>Restricted Boltzmann<br />Machine</td>
-        <td>Sparse Representations</td>
-        <td>Stacked Autoencoders</td>
-    </tr>
 </table>
 
 _note_
@@ -605,8 +628,8 @@ that many in the machine learning world encountered while trying to train
 deep neural networks. The leaders of these three groups are the fathers of
 the age of deep learning. 
 
-Before their work, the earliest layers in a deep network simply weren’t
-learning useful representations of the data. In many cases they weren’t
+Before their work, the earliest layers in a deep network simply weren't
+learning useful representations of the data. In many cases they weren't
 learning anything at all.
 
 Using different techniques, each of these three groups was able to get these
@@ -614,9 +637,73 @@ early layers to learn useful representations, which led to much more powerful
 neural networks.
 
 [NEXT]
-### Resurgence of Neural Networks
 
-Google's usage that popularised it (TODO: get usage)
+### Why Did Traditional Backpropagation Not Work?
+
+1. Our labelled datasets were thousands of times too small
+2. Our computers were millions of times too slow
+3. We initialized the weights in a stupid way
+4. We used the wrong type of non-linearity
+
+_note_
+So, why indeed, did purely supervised learning with backpropagation not work well in the past? Geoffrey Hinton summarized the findings up to today in these four points:
+
+Source: http://www.andreykurenkov.com/writing/a-brief-history-of-neural-nets-and-deep-learning-part-4/
+
+[NEXT]
+### Why It Works Now
+#### (1) Massive Datasets Available
+
+Thanks to Google, Amazon, Microsoft, etc.
+
+Everyone is on the web
+
+Everyone's data is captured
+
+[NEXT]
+### Why It Works Now
+#### (2) Distributed Training of Networks
+
+Backpropagation can be reduced to matrix multiplication
+
+Easily parallelised and distributed across multiple cores
+
+GPGPU and distributed computation
+
+![gpu](images/gpu.jpg)
+![datacentre](images/datacentre.jpg)
+
+[NEXT]
+### Why It Works Now
+#### (3) Better Weight Initialisation
+
+* Blindly choosing random weights caused problems
+* If **same scale** was used for weights in each layer, we get:
+  - vanishing gradient problem
+
+<div class="fragment" data-fragment-index="1">
+  <br />
+  <h3>
+    Solution?
+  </h3>
+</div>
+
+<div class="fragment" data-fragment-index="2">
+  <p>
+    TODO
+  </p>
+</div>
+
+_note_
+It was not so much choosing random weights that was problematic, as choosing
+random weights without consideration for which layer the weights are for.
+
+That is, unless weights are chosen with difference scales according to the layer they are in. Making this simple change results in significant improvements.
+
+[NEXT]
+### Why It Works Now
+#### (4) Better Activation Functions
+PLACEHOLDER<!-- .element id="modern-activation-functions-chart" -->
 
 [NEXT]
 ### Modern Uses of Deep Learning
@@ -624,13 +711,6 @@ Google's usage that popularised it (TODO: get usage)
 Widely used in image recognition
 
 TODO: examples (driver-less cards and two others)
-
-[NEXT]
-### Other Factors
-
-* cheaper computing power and data storage
-* more data than ever &dash; everyone is online
-* GPGPUs
 
 [NEXT]
 #### Projected Deep Learning Software Revenue
@@ -649,9 +729,6 @@ in 2015 to $10.4 billion in 2024.
 
 I suspect this large growth is because of deep learning's application in
 driver-less cars, which is going to become a *huge* industry.
-
-[NEXT]
-TODO
 
 
 [NEXT SECTION]
@@ -679,12 +756,11 @@ TODO
 
 
 [NEXT SECTION]
-### Futher Reading
-
+### Further Reading
 [Neural Network FAQs](http://www.faqs.org/faqs/ai-faq/neural-nets/)
 
+[NEXT]
 ### Slides
-
 [http://donaldwhyte.co.uk/intro-to-deeplearning](http://donaldwhyte.co.uk/intro-to-deeplearning)
 
 [NEXT]
@@ -702,4 +778,3 @@ TODO
 [GitHub](http://github.com/DonaldWhyte)
   </div>
 </div>
-</section>

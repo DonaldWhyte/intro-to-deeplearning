@@ -94,8 +94,24 @@
     </script>
 
     <script>
+      // CONSTANTS
+      var MIN_X = -5;
+      var MAX_X = 5;
+      var POINT_INTERVAL = 0.001;
+
+      // FUNCTIONS
       function loadChartEvent() {
         $("text:contains('Highcharts.com')").remove();
+      }
+
+      function generatePoints(minX, maxX, pointInterval, func) {
+        var pointsToGenerate = Math.abs(maxX - minX) / pointInterval;
+        var data = [];
+        for (var i = 0; i < pointsToGenerate; ++i) {
+          var x = minX + (i * pointInterval)
+          data.push([x, func(x)]);
+        }
+        return data;
       }
 
       Reveal.addEventListener('ready', function(event) {
@@ -336,55 +352,7 @@
           series: []
         };
 
-        var stepDataSeries = {
-          name: 'Step',
-          lineWidth: 5,
-          color: '#058DC7',
-          data: [
-              [-2,  0], [0, 0], [0, 1], [2, 1]
-          ]
-        };
-
-        var sigmoidDataSeries = {
-          name: 'Sigmoid',
-          lineWidth: 5,
-          color: '#ED561B',
-          type: 'spline',
-          data: (function() {
-            var STEEPNESS = 3.0;
-            function sigmoid(t) {
-              var exponent = STEEPNESS * -t;
-              return 1 / (1 + Math.exp(exponent));
-            }
-
-            // Points to generate for curve
-            var MIN_X = -2;
-            var MAX_X = 2;
-            var POINT_INTERVAL = 0.001;
-            var POINTS_TO_GENERATE = Math.abs(MAX_X - MIN_X) / POINT_INTERVAL;
-
-            var data = [];
-            for (var i = 0; i < POINTS_TO_GENERATE; ++i) {
-              var x = MIN_X + (i * POINT_INTERVAL)
-              data.push([x, sigmoid(x)]);
-            }
-            return data;
-          })()
-        };
-
-        var stepActivationFunctionChart = jQuery.extend(
-          true, {}, baseActivationFunctionChart);
-        stepActivationFunctionChart.series.push(stepDataSeries);
-
-        var sigmoidActivationFunctionChart = jQuery.extend(
-          true, {}, baseActivationFunctionChart);
-        sigmoidActivationFunctionChart.series.push(sigmoidDataSeries);
-
-        var allActivationFunctionsChart = jQuery.extend(
-          true, {}, baseActivationFunctionChart);
-        allActivationFunctionsChart.series.push(stepDataSeries);
-        allActivationFunctionsChart.series.push(sigmoidDataSeries);
-        allActivationFunctionsChart.legend = {
+        var commonLegendConfig = {
           layout: 'vertical',
           align: 'right',
           verticalAlign: 'middle',
@@ -402,6 +370,83 @@
           }
         };
 
+        var stepDataSeries = {
+          name: 'Step',
+          lineWidth: 5,
+          color: '#058DC7',
+          data: [
+              [-2,  0], [0, 0], [0, 1], [2, 1]
+          ]
+        };
+
+        var sigmoidDataSeries = {
+          name: 'Sigmoid',
+          lineWidth: 5,
+          color: '#ED561B',
+          type: 'spline',
+          data: (function() {
+            var STEEPNESS = 3.0;
+            function sigmoid(x) {
+              var exponent = STEEPNESS * -x;
+              return 1 / (1 + Math.exp(exponent));
+            }
+
+            return generatePoints(MIN_X, MAX_X, POINT_INTERVAL, sigmoid);
+          })()
+        };
+
+        var stepActivationFunctionChart = jQuery.extend(
+          true, {}, baseActivationFunctionChart);
+        stepActivationFunctionChart.series.push(stepDataSeries);
+
+        var sigmoidActivationFunctionChart = jQuery.extend(
+          true, {}, baseActivationFunctionChart);
+        sigmoidActivationFunctionChart.series.push(sigmoidDataSeries);
+
+        var allActivationFunctionsChart = jQuery.extend(
+          true, {}, baseActivationFunctionChart);
+        allActivationFunctionsChart.series.push(stepDataSeries);
+        allActivationFunctionsChart.series.push(sigmoidDataSeries);
+        allActivationFunctionsChart.legend = commonLegendConfig;
+
+        var reluDataSeries = {
+          name: 'ReLU',
+          lineWidth: 5,
+          color: '#99BADD',
+          data: (function() {
+            return generatePoints(MIN_X, MAX_X, POINT_INTERVAL, function(x) {
+              return Math.max(0, x);
+            });
+          })()
+        };
+
+        var softplusDataSeries = {
+          name: 'Softplus',
+          lineWidth: 5,
+          color: 'green',
+          type: 'spline',
+          data: (function() {
+            return generatePoints(MIN_X, MAX_X, POINT_INTERVAL, function(x) {
+              return Math.log(1 + Math.exp(x))
+            });
+          })()
+        };
+
+        var modernActivationFunctionsChart = jQuery.extend(
+          true, {}, baseActivationFunctionChart);
+        modernActivationFunctionsChart.series = [
+          sigmoidDataSeries,
+          reluDataSeries,
+          softplusDataSeries
+        ];
+        modernActivationFunctionsChart.legend = commonLegendConfig;
+        modernActivationFunctionsChart.xAxis.min = -5;
+        modernActivationFunctionsChart.xAxis.max = 5;
+        modernActivationFunctionsChart.xAxis.tickInterval = 5;
+        modernActivationFunctionsChart.yAxis.min = -1;
+        modernActivationFunctionsChart.yAxis.max = 5;
+        modernActivationFunctionsChart.yAxis.tickInterval = 1;
+
         $('#shape-plot').highcharts(baseShapeChart);
         $('#shape-plot-discriminant').highcharts(shapeChartWithDiscriminant);
         $('#shape-plot-complex').highcharts(shapeChartComplex);
@@ -410,6 +455,7 @@
         $('#step-activation-function-chart').highcharts(stepActivationFunctionChart);
         $('#sigmoid-activation-function-chart').highcharts(sigmoidActivationFunctionChart);
         $('#all-activation-functions-chart').highcharts(allActivationFunctionsChart);
+        $('#modern-activation-functions-chart').highcharts(modernActivationFunctionsChart);
 
           MathJax.Hub.Rerender();
       });

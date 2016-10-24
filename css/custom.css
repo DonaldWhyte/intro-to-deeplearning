@@ -25,6 +25,18 @@ a.small {
     margin: 0px !important;
 }
 
+/* Table Styles */
+
+.centered-text td {
+    text-align: center !important;
+}
+
+.borderless tr,
+.borderless th,
+.borderless td {
+    border: none !important;
+}
+
 /* Background Slides */
 
 .stroke p {
@@ -173,7 +185,7 @@ img[alt="Yann Lecun"] {
 }
 
 img[alt="Yoshua Bengio"] {
-    width: 200px;
+    width: 190px;
 }
 
 img[alt="perceptron"] {
@@ -191,4 +203,9 @@ img[alt="weight_matrix"] {
 
 img[alt="gradient_descent"] {
     width: 750px;
+}
+
+img[alt="gpu"],
+img[alt="datacentre"] {
+    width: 300px;
 }
