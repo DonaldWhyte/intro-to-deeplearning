@@ -1,3 +1,15 @@
+## Introduction to Deep Learning
+
+[@donald_whyte](http://twitter.com/donald_whyte)
+
+<div id="logo-notice">
+  <p>Originally made for:</p>
+
+  ![department for transport](images/department-for-transport.svg)
+</div>
+
+
+[NEXT SECTION]
 A bit about myself...
 
 [NEXT]
@@ -449,6 +461,22 @@ as the slope of the gradient.
 Source of diagram: http://sebastianraschka.com/Articles/2015_singlelayer_neurons.html#gradient-descent
 
 [NEXT]
+
+Mean squared error loss function:
+
+$ J(w) = \frac {1} {n} \sum_{i=i}^N {(y_i - t_i)^2} $
+
+where:
+
+* $N$ is the number of inputs in your test dataset
+* for each training sample $i$:
+  - $y_i$ is a vector storing the values of each output node
+  - $t_i$ is a vector storing the *known, correct* outputs
+
+_note_
+Note that this function is evaluated for *every* single point run through the training dataset!
+
+[NEXT]
 ### Backpropagation
 
 * Equivalent to gradient descent
@@ -589,6 +617,16 @@ Neural networks with many hidden layers
 <!-- .slide: data-background="images/nvidia_deep_learning.png" -->
 
 [NEXT]
+<!-- .slide: data-background-color="white" -->
+<!-- .slide: data-background="images/hierarchical_learning.jpg" -->
+<!-- .slide: data-background-size="800px" -->
+
+_note_
+Why does deep learning work? Why is it better than one-layer shallow networks?
+
+TOOD
+
+[NEXT]
 ### Core Issue with Deep Learning
 ##### (until 2006)
 
@@ -706,7 +744,9 @@ _note_
 It was not so much choosing random weights that was problematic, as choosing
 random weights without consideration for which layer the weights are for.
 
-That is, unless weights are chosen with difference scales according to the layer they are in. Making this simple change results in significant improvements.
+That is, unless weights are chosen with difference scales according to the layer they are in, we get the vanishing gradient problem.
+
+TODOMaking this simple change results in significant improvements.
 
 [NEXT]
 ### Why It Works Now
@@ -757,7 +797,26 @@ driver-less cars, which is going to become a *huge* industry.
 #### Technical Overview
 
 [NEXT]
+### How deep is deep?
+
+Yoshua Bengio:
+
+> Although there is no formal specification of the number of layers, a
+> neural network with more than 3 layers is considered "deep".
+
+_note_
+Most papers on deep learning use networks with 5-7 layers.
+
+[NEXT]
+### Architecture Types
 TODO
+
+[NEXT]
+### Toolbox
+TODO: what we use
+
+[NEXT]
+### E
 
 
 [NEXT SECTION]

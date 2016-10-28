@@ -222,3 +222,7 @@ img[alt="image_recognition"],
 img[alt="speech_synthesis"] {
     width: 300px;
 }
+
+img[alt="hierarchical_learning"] {
+    width: 800px;
+}
