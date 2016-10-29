@@ -794,38 +794,211 @@ driver-less cars, which is going to become a *huge* industry.
 [NEXT SECTION]
 ## Deep Learning
 
-#### Technical Overview
+#### By Example
 
 [NEXT]
-### How deep is deep?
+<!-- .slide: data-background="images/higgs_boson.jpg" -->
+<!-- .slide: class="stroke large" -->
+Higgs Boson Detection
 
-Yoshua Bengio:
+[NEXT]
+### What is the Higgs Boson?
 
-> Although there is no formal specification of the number of layers, a
-> neural network with more than 3 layers is considered "deep".
+* Last unobserved particle in the Standard Model of physics
+* Its discovery is the "ultimate verification" of the Standard Model
+* 40 year effort by the scientific community
+* March 2013:
+  - the Higgs boson was officially confirmed to exist
+
+[NEXT]
+<!-- .slide: data-background="images/large_hadron_collider.jpg" -->
+<!-- .slide: class="stroke large" -->
+Large Hadron Collider
 
 _note_
-Most papers on deep learning use networks with 5-7 layers.
+Built by CERN in Switzerland, the Large Hadron Collider is capable
+of producing the vast amount of energy required to run complex particle
+physics simulations.
 
 [NEXT]
-### Architecture Types
+### Finding a Higgs Boson Particle
+
+Vast amounts of energy required to create them
+
+LHC used to produce this energy
+
+_note_
+It is difficult to detect the Higgs Boson because of their massive size
+(compared with other particles). We need vast amounts of energy to create
+them.
+The Large Hadron Collider at CERN gave us enough energy to create them.
+
+[NEXT]
+### Process
+
+1. accelerate two sets of particles 
+2. set them on a path to collide with each other
+3. monitor *effect* of collision using detectors
+4. if right effect occurs, a Higgs boson was produced
+
+Use measurements of effects to infer Higgs boson production!
+<!-- .element data-fragment-index="1" class="fragment" -->
+
+_note_
+2:
+Each collision produces a flurry of new particles which are detected by 
+etectors around the point where they collide.
+
+There is still only a very small chance, one in 10 billion, of a Higgs Boson appearing and being detected, so the LHC needs to smash together trillions of
+particals.
+
+Supercomputers the need to sift through a massive amount of data to find the
+few collisions where evidence of the Higgs boson is.
+
+3 - 4:
+However, even when a Higgs boson, or any interesting particle is produced,
+detecting them poses considerable challenges. They are too small to be
+directly observed and decay almost immediately into other particles.
+
+Though new particles cannot be directly observed, the lighter stable particles
+to which they decay, called decay products, can be observed. 
+
+Multiple layers of detectors surround the point of collision for this purpose. 
+The detects measure the direction and momentum of each decay product to be
+measured.
+
+So we use the measurements of the stable particles to *infer* the creation of
+a Higgs boson!
+
+[NEXT]
+### Higgs Boson as Classification
+
+* Classification problem
+* Detect when a particle collision produces a Higgs boson
+* Two classes:
+  - signal (collision that created a Higgs boson)
+  - background (collision that did not)
+
+_note_
+The vast majority of particle collisions do not produce exotic particles.
+For example, though the Large Hadron Collider produces approximately 1011
+collisions per hour, approximately 300 of these collisions result in a
+Higgs boson, on average.
+
+Therefore, good data analysis depends on distinguishing collisions which
+produce particles of interest (signal) from those producing other
+particles.
+
+[NEXT]
+### Training Dataset
+
+* Synthetic
+* Monte Carlo simulations generated input/output pairs
+* Input contains:
+  - kinematic properties
+  - measured by particle detectors in the LHC
+* Output is a binary value:
+  - 1 if Higgs boson produced, 0 otherwise
+* 10,500,000 training data points
+* 500,000 test
+
+[NEXT]
+### Features
+
+* 21 low-level features
+  - raw measurements from particle detectors
+* 7 high-level features
+  - functions derived from low-level features
+  - generate abstract, complex info on collision effects
+  - hand-crafted by physicists
+
+_note_
+The first 21 features are kinematic properties measured by the particle
+detectors in the accelerator.
+
+The last seven features are functions of the first 21 features. These are
+high-level features derived by physicists to help discriminate between the
+two classes. 
+
+[NEXT]
+### Traditional ML Performance
+
+<!-- .slide: class="small" -->
+| Algorithm                    | Low-Level | High-Level | All       |
+| ---------------------------- | --------- | ---------- | --------- |
+| Boosted Decision Trees       | 0.730     | 0.780      | 0.810     |
+| Neural Net (1 Layer)         | 0.733     | 0.777      | 0.816     |
+
+<div style="height: 32px"></div>
+
+Source: [[1]](https://arxiv.org/pdf/1402.4735.pdf)
+
+[NEXT]
+
+High-level features perform worse than all features
+
+Suggests high-level features do not capture all info in low-level features
+
+_note_
+Methods trained with only the high-level features perform worse than
+those with all the features.
+
+This suggests that despite the insight represented by the high-level features,
+they do not capture all of the information contained in the low-level
+features.
+
+[NEXT]
+Let's use deep learning!
+
+**Automatically** discover insight contained in high-level features
+
+Using only low-level features!
+
+[NEXT]
+<!-- .slide: data-background-color="white" -->
+<!-- .slide: data-background-image="images/higgs_boson_deep_architecture.svg" -->
+<!-- .slide: data-background-size="1200px" -->
+
+_note_
+* 6 hidden layers
+* 500 nodes on each hidden layer
+* ReLU activation function
+* Higher Weight initialisation where earlier layers have higher initial weights
+
+[NEXT]
+### What About Weight Initialisation?
+
+Weights initialised random from normal distribution
+
+Less variance in weights for deeper layers
+
+| Layer(s)      | Standard Deviation |
+| ------------- | ------------------ |
+| First Layer   | 0.1                |
+| Hidden Layers | 0.05               |
+| Output Layer  | 0.001              |
+
+[NEXT]
+### Deep Learning Performance
+
+<!-- .slide: class="small" -->
+| Algorithm                    | Low-Level | High-Level | All       |
+| ---------------------------- | --------- | ---------- | --------- |
+| Boosted Decision Trees       | 0.730     | 0.780      | 0.810     |
+| Neural Net (1 Layer)         | 0.733     | 0.777      | 0.816     |
+| Deep Learning (3 Layers)     | 0.850     | -          | -         |
+| Deep Learning (4 Layers)     | 0.869     | -          | -         |
+| **Deep Learning (6 Layers)** | **0.880** | **0.800**  | **0.885** |
+
+<div style="height: 32px"></div>
+
+Sources: [[1]](https://arxiv.org/pdf/1402.4735.pdf) and [[2]](http://www.slideshare.net/0xdata/deep-learning-through-examples)
+
+_note_
 TODO
 
 [NEXT]
-### Toolbox
-TODO: what we use
-
-[NEXT]
-### E
-
-
-[NEXT SECTION]
-## Tensorflow
-#### Deep Learning in Practice
-![tensorflow](images/tensorflow.png)
-
-[NEXT]
-TODO
+TODO: final insights from this example
 
 
 [NEXT SECTION]
