@@ -254,12 +254,13 @@ For `n` features, the perceptron is defined as:
 * activation function `f(x)`
 
 [NEXT]
-|              |                                                |
-| ------------ | ---------------------------------------------- |
-| Input        | $x = \left(x_0, x_1, \cdots, w_n\right)$       |
-| Weights      | $w = \left(w_0, w_1, \cdots, w_n\right)$       |
-| Bias         | $b$                                            |
-| Weighted Sum | $s = \left(\sum_{i=0}^{n} {w_ix_i}\right) + b$ |
+|                     |                                            |
+| ------------------- | ------------------------------------------ |
+| Input               | $x = \left(x_0, x_1, \cdots, w_n\right)$   |
+| Weights             | $w = \left(w_0, w_1, \cdots, w_n\right)$   |
+| Bias                | $b$                                        |
+| Weighted Sum        | $\left(\sum_{i=0}^{n} {w_ix_i}\right) + b$ |
+| Activation Function | $f(x)$                                     |
 
 
 [NEXT]
@@ -267,27 +268,12 @@ For `n` features, the perceptron is defined as:
 
 Simulates the 'firing' of a physical neuron
 
-1 = neuron fired
+1 = neuron fires, 0 = neuron does not fire
 
-0 = neuron did not fire
-
----
-
-<div class="fragment fade-in" data-fragment-index="1">
-<div class="fragment fade-out" data-fragment-index="2">
-$$
-  f(x) = \begin{cases}1 & \text{if }s > 0\\\\0
-  & \text{otherwise}\end{cases}
-$$
-</div>
-</div>
-
-<div class="fragment fade-in" data-fragment-index="2">
 $$
   f(x) = \begin{cases}1 & \text{if }w \cdot x + b > 0\\\\0
   & \text{otherwise}\end{cases}
 $$
-</div>
 
 [NEXT]
 ### Step Function
@@ -303,7 +289,7 @@ PLACEHOLDER<!-- .element id="step-activation-function-chart" -->
 
 * Can make perceptron produce continuous output
 * Useful for regression (predicting continuous values)
-  - e.g. temperature
+  - e.g. probabilities
 
 PLACEHOLDER<!-- .element id="all-activation-functions-chart" -->
 
@@ -312,7 +298,7 @@ We'll find having a continuous activation function very useful for when we
 combine many perceptrons together. 
 
 [NEXT]
-How do we **learn** `w` and `b`?
+How do we learn `w` and `b`?
 
 [NEXT]
 ### Perceptron Learning Algorithm
@@ -402,11 +388,11 @@ Standard neural network architectures make each layer fully connected
 to the next. 
 
 [NEXT]
-Produces a **weight matrix**
+Produces multiple **weight matrices**
+
+One for each layer
 
 ![weight_matrix](images/weight_matrix.svg)
-
-(also: no more biases)<!-- .element class="small" -->
 
 _note_
 Weight matrix produced using the following Latex equation:
@@ -734,11 +720,8 @@ GPGPU and distributed computation
 <div class="fragment" data-fragment-index="1">
   <br />
   <h4>
-    Solution?
+    Solution
   </h4>
-</div>
-
-<div class="fragment" data-fragment-index="2">
   <p>
     Higher weight magnitudes and variance in earlier layers!
   </p>
@@ -1014,8 +997,8 @@ Less variance in weights for deeper layers
 | ---------------------------- | --------- | ---------- | --------- |
 | Boosted Decision Trees       | 0.730     | 0.780      | 0.810     |
 | Neural Net (1 Layer)         | 0.733     | 0.777      | 0.816     |
-| Deep Learning (3 Layers)     | 0.850     | -          | -         |
-| Deep Learning (4 Layers)     | 0.869     | -          | -         |
+| Deep Learning (3 Layers)     | 0.850     | 0.783      | 0.856     |
+| Deep Learning (4 Layers)     | 0.869     | 0.785      | 0.872     |
 | **Deep Learning (6 Layers)** | **0.880** | **0.800**  | **0.885** |
 
 <div style="height: 32px"></div>
