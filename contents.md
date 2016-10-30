@@ -203,6 +203,10 @@ them might just be outliers, but because the model was trained on a small
 training dataset, the feature space looked like it had a different structure.
 
 [NEXT]
+<!-- .slide: data-background-color="white" -->
+![overfitting](images/overfitting.png)
+
+[NEXT]
 ### Takeaways
 
 * Write programs that convert raw input to feature vectors
