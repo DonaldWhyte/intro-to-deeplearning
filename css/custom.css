@@ -140,12 +140,12 @@ img[alt="bloomberg"] {
 
 img[alt="bt"] {
     width: 200px;
-    padding-right: 30px;
+    padding-right: 40px;
 }
 
-img[alt="ibm"] {
-    width: 200px;
-    padding-right: 30px;
+img[alt="bloomberg_small"] {
+    width: 350px;
+    padding-right: 16px;
 }
 
 img[alt="helper.io"] {
@@ -229,4 +229,18 @@ img[alt="hierarchical_learning"] {
 
 img[alt="higgs_boson_deep_architecture"] {
     width: 1500px;
+}
+
+img[alt="deep_feedforward"],
+img[alt="deep_autoencoder"],
+img[alt="deep_belief_network"] {
+    width: 600px;
+}
+
+img[alt="recurrent_neural_network"] {
+    width: 375px;
+}
+
+img[alt="convolutional_neural_network"] {
+    width: 1000px;
 }

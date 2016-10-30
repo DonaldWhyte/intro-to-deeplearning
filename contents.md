@@ -41,13 +41,13 @@ In countries such as: Egypt, UAE, Italy, Germany, the US and, of course, the UK.
 
 [NEXT]
 ![bt](images/bt.svg)
-![ibm](images/ibm.svg)
+![bloomberg_small](images/bloomberg_logo.svg)
 ![helper.io](images/helper.svg)
 
 Applied machine learning in:
 
 * network security
-* enterprise software management
+* enterprise software detection detection
 * employment
 
 _note_
@@ -55,7 +55,7 @@ I've applied machine learning to
 
 increase global network security
 
-assist organisations maintain their large, enterprise software estates
+automatically detect defects in large-scale software systems
 
 and more recently, I've consulted for recruitment startup helper.io
 
@@ -729,14 +729,14 @@ GPGPU and distributed computation
 
 <div class="fragment" data-fragment-index="1">
   <br />
-  <h3>
+  <h4>
     Solution?
-  </h3>
+  </h4>
 </div>
 
 <div class="fragment" data-fragment-index="2">
   <p>
-    TODO
+    Higher weight magnitudes and variance in earlier layers!
   </p>
 </div>
 
@@ -746,7 +746,8 @@ random weights without consideration for which layer the weights are for.
 
 That is, unless weights are chosen with difference scales according to the layer they are in, we get the vanishing gradient problem.
 
-TODOMaking this simple change results in significant improvements.
+Give higher weight magnitudes and variance in earlier layers significantly
+reduces the changes of hitting the vanishing gradient problem.
 
 [NEXT]
 ### Why It Works Now
@@ -811,6 +812,19 @@ Higgs Boson Detection
   - the Higgs boson was officially confirmed to exist
 
 [NEXT]
+### Finding a Higgs Boson Particle
+
+Vast amounts of energy required to create them
+
+Large Hadron Collider used to produce this energy
+
+_note_
+It is difficult to detect the Higgs Boson because of their massive size
+(compared with other particles). We need vast amounts of energy to create
+them.
+The Large Hadron Collider at CERN gave us enough energy to create them.
+
+[NEXT]
 <!-- .slide: data-background="images/large_hadron_collider.jpg" -->
 <!-- .slide: class="stroke large" -->
 Large Hadron Collider
@@ -821,17 +835,9 @@ of producing the vast amount of energy required to run complex particle
 physics simulations.
 
 [NEXT]
-### Finding a Higgs Boson Particle
-
-Vast amounts of energy required to create them
-
-LHC used to produce this energy
-
-_note_
-It is difficult to detect the Higgs Boson because of their massive size
-(compared with other particles). We need vast amounts of energy to create
-them.
-The Large Hadron Collider at CERN gave us enough energy to create them.
+<!-- .slide: data-background-color="white" -->
+<!-- .slide: data-background-image="images/lhc_experiment_visualisation.jpg" -->
+<!-- .slide: data-background-size="600px" -->
 
 [NEXT]
 ### Process
@@ -869,6 +875,7 @@ measured.
 
 So we use the measurements of the stable particles to *infer* the creation of
 a Higgs boson!
+
 
 [NEXT]
 ### Higgs Boson as Classification
@@ -995,22 +1002,161 @@ Less variance in weights for deeper layers
 Sources: [[1]](https://arxiv.org/pdf/1402.4735.pdf) and [[2]](http://www.slideshare.net/0xdata/deep-learning-through-examples)
 
 _note_
-TODO
+Highlight fact that deep learning performs better than traditional
+classifiers that use hand-crafted features and heavily tuned parameters.
 
 [NEXT]
-TODO: final insights from this example
+### Takeaway
+##### The Problem
 
+Data scientists had to reluctantly accept the limitations of shallow
+networks
+
+Must construct helpful, high-level features to guide shallow networks and other ML techniques
+
+_note_
+Until now, physicists have reluctantly accepted the limitations of the shallow
+networks employed to date. In an attempt to circumvent these limitations,
+physicists manually construct helpful non-linear feature combinations to guide
+the shallow networks.
+
+[NEXT]
+### Takeaway
+##### Deep Learning As a Solution
+
+Higgs boson detection is an example where deep learning
+
+Provides better discrimination than traditional classifiers
+
+Even when traditional classifiers are aided by manually constructed features!
+
+
+_note_
+
+Recent advances in deep learning techniques lift these limitations by
+automatically discovering powerful non-linear feature combinations and
+providing better discrimination power than current classifiers, even when
+aided by manually-constructed features.
 
 [NEXT SECTION]
 ## Summary
 
 [NEXT]
-TODO
+Traditional ML requires complex, hand-crafted features
 
+Correctly classifying complex feature spaces requires lots of fine-tuning of features and parameters
+
+...and it still might not be accurate enough.
+
+[NEXT]
+Theoretically, neural networks are extremely powerful
+
+Can model *any* mathematical function and fit *any* space
+
+Deep networks can *learn* complex features for us
+
+No more time-consuming high-level feature engineering
+
+[NEXT]
+But we just didn't know how to effectively train them
+
+Vanishing gradients, poor weight initialisation and lack of computational power held us back
+
+Meant we could realistically only use shallow networks
+
+[NEXT]
+Until 2006, where we saw an explosion of new techniques
+
+ReLU/softmax activations, smarter weight initialisations, regularisation techniques
+
+And much better hardware for training nets (GPGPUs)
+
+[NEXT]
+We've only scratched the surface in this talk
+
+These new techniques have enabled us to build very complex architectures for  variety of tasks
+
+[NEXT]
+<!-- .slide: data-background-color="white" -->
+### Deep Feed-Forward Nets
+
+Classification / regression problems with highly complex feature spaces
+
+![deep_feedforward](images/deep_feedforward.png)
+
+[NEXT]
+<!-- .slide: data-background-color="white" -->
+### Deep Autoencoders
+
+Learns 'compressed' version of input data
+
+Can provide better abstraction and generalisation
+
+![deep_autoencoder](images/deep_autoencoder.png)
+
+[NEXT]
+<!-- .slide: data-background-color="white" -->
+### Deep Belief Networks
+
+Layers can be trained individually
+
+Allows layers to be reused in other networks
+
+![deep_belief_network](images/deep_belief_network.png)
+
+[NEXT]
+<!-- .slide: data-background-color="white" -->
+### Convolutional Neural Networks
+
+Great for image recognition
+
+Image recognition and video analysis
+
+![convolutional_neural_network](images/convolutional_neural_network.png)
+
+[NEXT]
+<!-- .slide: data-background-color="white" -->
+### Recurrent Neural Networks
+
+Great for time-series data
+
+Processing/generating audio or natural language
+
+![recurrent_neural_network](images/recurrent_neural_network.png)
+
+[NEXT]
+We don't **HAVE** to use deep learning.
+
+It's not *always* better.
+
+[NEXT]
+Traditional ML techniques are often powerful enough.
+
+And are much easier to use:
+  - faster to train
+  - easier to understand
+  - building traditional classifiers increasingly automated
+
+[NEXT]
+Nevertheless, deep learning has proven to achieve that traditional techniques can't.
+
+It's here to stay!
 
 [NEXT SECTION]
 ### Further Reading
+
+[A Primer on Deep Learning](https://www.datarobot.com/blog/a-primer-on-deep-learning/)
+
+[A 'Brief' History of Neural Nets and Deep Learning](http://www.andreykurenkov.com/writing/a-brief-history-of-neural-nets-and-deep-learning/)
+
+[Tensorflow Tutorials](https://www.tensorflow.org/versions/r0.11/tutorials/index.html)
+
+[NEXT]
+### Advanced Reading
+
 [Neural Network FAQs](http://www.faqs.org/faqs/ai-faq/neural-nets/)
+
+[Deep Learning with Tensorflow](https://docs.google.com/presentation/d/1TVixw6ItiZ8igjp6U17tcgoFrLSaHWQmMOwjlgQY9co/pub?slide=id.p)
 
 [NEXT]
 ### Slides
