@@ -446,7 +446,9 @@
         $('#all-activation-functions-chart').highcharts(allActivationFunctionsChart);
         $('#modern-activation-functions-chart').highcharts(modernActivationFunctionsChart);
 
-          MathJax.Hub.Rerender();
+        // Force a re-render after slides have loaded to ensure all math
+        // equations are picked up
+        MathJax.Hub.Rerender();
       });
     </script>
   </body>
