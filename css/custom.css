@@ -1,0 +1,246 @@
+/* Global Styles */
+
+.reveal section img {
+    border: 0px;
+    box-shadow: none;
+    background: none;
+}
+
+/* Text Sizes */
+
+p.small,
+a.small {
+    font-size: 28px;
+}
+
+.small td,
+.small th {
+    font-size: 32px;
+}
+
+/* Padding Styles */
+
+.low-padding p,
+.low-padding img {
+    margin: 0px !important;
+}
+
+/* Table Styles */
+
+.centered-text td {
+    text-align: center !important;
+}
+
+.borderless tr,
+.borderless th,
+.borderless td {
+    border: none !important;
+}
+
+/* Background Slides */
+
+.stroke p {
+    text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+
+.stroke h2 {
+    text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+
+.large p {
+    font-size: 64px;
+    font-weight: bold;
+}
+
+/* Title */
+
+#logo-notice {
+    float: right;
+}
+
+#logo-notice p {
+    font-size: 18px;
+    margin: 5px;
+    text-align: center;
+}
+
+/* Contact Details */
+
+.donald {
+    background-image: url('../images/donald.jpg');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 125px;
+    width: 400px;
+    height: 400px;
+}
+
+div.contact-details {
+    margin-top: 125px;
+}
+
+.left-col {
+    width: 50%;
+    float: left;
+}
+
+.right-col {
+    width: 50%;
+    float: right;
+}
+
+.clear-col {
+    float: none;
+    clear: both;
+}
+
+/* Graph Sizes */
+
+#shape-plot {
+    width: 500px;
+    height: 400px;
+    margin-top: 32px
+}
+
+#shape-plot-discriminant {
+    width: 450px;
+}
+
+#shape-plot-complex {
+    width: 450px;
+}
+
+#shape-plot-overfitting {
+    width: 450px;
+}
+
+#step-activation-function-chart,
+#all-activation-functions-chart {
+    margin-top: 32px;
+}
+
+/* Image Sizes */
+
+img[alt="department for transport"] {
+    width: 175px;
+    margin: 5px;
+}
+
+img[alt="bloomberg"] {
+    width: 600px;
+}
+
+img[alt="bt"] {
+    width: 200px;
+    padding-right: 40px;
+}
+
+img[alt="bloomberg_small"] {
+    width: 350px;
+    padding-right: 16px;
+}
+
+img[alt="helper.io"] {
+    width: 85px;
+}
+
+img[alt="education"] {
+    width: 300px;
+}
+
+img[alt="security"] {
+    width: 300px;
+}
+
+img[alt="robotics"] {
+    width: 300px;
+}
+
+img[alt="finance"] {
+    width: 300px;
+}
+
+img[alt="speech recognition"] {
+    width: 300px;
+}
+
+img[alt="advertising"] {
+    width: 300px;
+}
+
+img[alt="Geoff Hinton"] {
+    width: 200px;
+}
+
+img[alt="Yann Lecun"] {
+    width: 200px;
+}
+
+img[alt="Yoshua Bengio"] {
+    width: 190px;
+}
+
+img[alt="perceptron"] {
+    width: 800px;
+}
+
+img[alt="perceptron_learning"] {
+    zoom: 0.5; /* all browsers */
+    -moz-transform: scale(0.5);  /* Firefox */
+}
+
+img[alt="weight_matrix"] {
+    width: 600px;
+}
+
+img[alt="gradient_descent"] {
+    width: 750px;
+}
+
+img[alt="gpu"],
+img[alt="datacentre"] {
+    width: 300px;
+}
+
+img[alt="tensorflow"] {
+    width: 150px;
+}
+
+img[alt="self_driving_car"] {
+    width: 320px;
+}
+
+img[alt="image_recognition"],
+img[alt="speech_synthesis"] {
+    width: 300px;
+}
+
+img[alt="hierarchical_learning"] {
+    width: 800px;
+}
+
+img[alt="higgs_boson_deep_architecture"] {
+    width: 1500px;
+}
+
+img[alt="deep_feedforward"],
+img[alt="deep_autoencoder"],
+img[alt="deep_belief_network"] {
+    width: 600px;
+}
+
+img[alt="recurrent_neural_network"] {
+    width: 375px;
+}
+
+img[alt="convolutional_neural_network"] {
+    width: 1000px;
+}
