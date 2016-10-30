@@ -47,7 +47,7 @@ In countries such as: Egypt, UAE, Italy, Germany, the US and, of course, the UK.
 Applied machine learning in:
 
 * network security
-* enterprise software detection detection
+* enterprise software defect detection
 * employment
 
 _note_
@@ -451,7 +451,7 @@ So we need continuous activation functions like sigmoid!
 | ------------- | ------------ |
 | Weight matrix | $w$          |
 | Loss function | $J(w)$       |
-| Loss minmina  | $J_{min}(w)$ |
+| Loss minima  | $J_{min}(w)$ |
 
 _note_
 We can describe the principle behind gradient descent as “climbing down a
