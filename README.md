@@ -7,7 +7,23 @@ examples to illustrate how to apply deep learning in practice.
 
 Topics covered:
 
-* TODO
+* machine learning definition
+* growth of adoption
+* supervised learning
+    - classification
+    - regression
+    - feature extraction
+    - model types and overfitting
+* neural networks
+    - perceptron
+    - activation functions
+    - feed-forward neural networks
+    - backpropagation
+    - vanishing gradient problem
+* deep learning
+    - training deep networks
+    - types of deep networks
+    - applying deep learning to high-energy physics problem
 
 ## Running Presentation
 
